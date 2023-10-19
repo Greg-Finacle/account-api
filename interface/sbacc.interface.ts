@@ -9,3 +9,10 @@ export interface SBAccount {
   acctShortName:  string
   
 }
+
+
+export interface SBAccountRes {
+  name: string
+  accountNumber: string
+}
+

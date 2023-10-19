@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { SBAccount } from "../interface/sbacc.interface";
+import { SBAccount, SBAccountRes } from "../interface/sbacc.interface";
 import SBAccountFI from "../integrators/sbacc.integrator";
 import FinacleCall from '../middleware/call'
 import xmlParser from '../middleware/parser' 
@@ -44,14 +44,20 @@ class SBAccountController {
           }
           else 
           {
-              responseXMLBody = responseXML.FIXML
+              const xmlFields:string[] = responseXML.FIXML
                 .Body[0]
-                .XferTrnAddResponse[0]
-                .XferTrnAddRs[0]
-                .TrnIdentifier[0]
-              console.log(responseXMLBody)
+                .SBAcctAddResponse[0]
+                .SBAcctAddRs[0]
+                .SBAcctId[0]
+                .AcctId
+              console.log(xmlFields)
 
-              res.status(200).send({"status":responseXMLHeader, "message": responseXMLBody})
+              const servResponse:SBAccountRes = {
+                name: request.acctName,
+                accountNumber: xmlFields[0]
+              }
+
+              res.status(200).send({"status":responseXMLHeader, "message": servResponse})
           }
       } catch (error) {
         console.log(error)

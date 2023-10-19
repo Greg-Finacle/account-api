@@ -33,7 +33,7 @@ class SBAccountFI {
             <MessageKey>
             <RequestUUID>${crypto.randomUUID()}</RequestUUID>
             <ServiceRequestId>SBAcctAdd</ServiceRequestId>
-            <ServiceRequestVersion>${process.env.FI_VERSION_V11}</ServiceRequestVersion>
+            <ServiceRequestVersion>${process.env.FI_VERSION_V10}</ServiceRequestVersion>
             <ChannelId>COR</ChannelId>
             <LanguageId></LanguageId>
             </MessageKey>
@@ -87,7 +87,8 @@ class SBAccountFI {
             <LOCALCALFLG>N</LOCALCALFLG>
             <WTAXBRNBY>A</WTAXBRNBY>
             <WTAXFLG>N</WTAXFLG>
-            <INTCRACCTFLG_CODE>S</INTCRACCTFLG_CODE>
+            <WTAXSCOPE>P</WTAXSCOPE>
+            <INTCRFLG>S</INTCRFLG>
             </SBAcctAdd_CustomData>
             </SBAcctGenInfo>
             </SBAcctAddRq>
