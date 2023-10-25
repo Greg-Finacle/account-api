@@ -1,6 +1,9 @@
 import express, { Router } from 'express'
+
 import sbaccValidator from '../validator/sbacc.validator'
 import sbaccController from '../controllers/sbacc.controller'
+
+const auth = require('../middleware/auth')
 
 class HomeRoutes{
   public router: Router = express.Router()
@@ -10,7 +13,7 @@ class HomeRoutes{
   }
 
   initializeRoutes(){
-    this.router.post('/create/savings', sbaccValidator, sbaccController)
+    this.router.post('/create/savings', auth, sbaccValidator, sbaccController)
   }
 }
 
